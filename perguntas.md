@@ -38,3 +38,47 @@ Docker Hub: Isso aí! O Docker Hub provê um repositório com muitas aplicaçõe
 
 Docker Swarm: Isso aí! Essa tecnologia permite o uso de múltiplos docker hosts.
 ```
+
+# Aula 2
+
+Temos os seguintes comandos do Docker e suas respectivas funcionalidades:
+
+1) O comando docker ps nos permite ver todos os container já criados
+
+2) O comando docker container prune permite remover todos os containers inativos de uma só vez.
+
+3) O comando docker rm ID_DO_CONTAINER remove um container
+
+Quais funcionalidades, e seus respectivos comandos, estão corretas?
+
+- Funcionalidade 1
+- __Funcionalidade 2__
+- __Funcionalidade 3__
+```
+Funcionalidade 2: Alternativa correta! O comando docker container prune realmente apaga todos os containers inativos, mas dá um aviso antes.
+
+Funcionalidade 3: Alternativa correta! O comando docker rm ID_DO_CONTAINER permite remover um container especifico.
+```
+
+Temos as seguintes afirmações sobre o Layered File System:
+
+A) Toda imagem que baixamos é composta de uma ou mais camadas.
+
+B) Essas camadas podem ser reaproveitadas em outras imagens, acelerando assim o tempo de download.
+
+C) As camadas de uma imagem são de escrita e leitura
+
+Qual dessas afirmações é falsa?
+
+- A é falsa
+- B é falsa
+- __C é falsa__
+```
+Realmente é falsa pois as camadas na imagem são de leitura apenas.
+```
+
+Luis resolveu acessar sua aplicação, chamada de MinhaAplicacao e que está dentro do container, utilizando a porta 8080 a partir de sua máquina. Porém, como é novo no ramo do Docker, ele está em dúvida sobre qual comando deve utilizar para saber quais são as portas mapeadas. Marque a opção que realiza o desejo de Luis:
+
+- Luis deve usar o comando 'docker run MinhaAplicacao'.
+- __Luis deve usar o comando 'docker port ID_DO_CONTAINER'  para que possa saber qual porta de sua máquina faz referência à porta 8080 de seu container.__
+- Luis deve usar o comando 'docker rmi MinhaAplicacao'.
