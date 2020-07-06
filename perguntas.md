@@ -200,3 +200,52 @@ WORKDIR /etc/sinc/plen
 ENTRYPOINT chmod 755 /etc/sinc
 EXPOSE 1711
 ```
+
+## Aula 5
+
+1 - Marque as alternativas verdadeiras a respeito de uma Rede Docker:
+
+- __Por padrão, os containers ficam na mesma rede com o nome 'bridge'.__
+
+> Correto. Porém, a comunicação deve ser feita através de IP.
+
+- __Na rede padrão do Docker, só podemos realizar a comunicação utilizando IPs.__
+
+> Exatamente. Se criarmos nossa própria rede podemos usar seu nome no lugar do IP.\
+
+- __Com 'docker inspect ID_DO_CONTAINER' podemos verificar a qual rede ele pertence.__
+
+> Exatamente, o comando inspect mostra vários detalhes sobre o container, entre eles o network. Nesse item, aparece o nome da nossa rede, IP do container, o gateway e entre outras informações.
+
+- A rede padrão deve ser habilitado explicitamente para funcionar.
+
+2 - Emanuelle decidiu criar uma nova rede para que pudesse realizar a comunicação entre containers através dela. Então, ela executou o seguinte comando:
+
+``` Docker
+docker network create --driver bridge local
+```
+
+Marque as alternativas verdadeiras a respeito do comando executado por Emanuelle.
+
+- __A instrução 'create' não é opcional.__
+
+> Correto, sem ela não será possível criar a rede.
+
+- Cria uma rede local chamada 'bridge'.
+- Utiliza o driver 'local'.
+- __O parâmetro '--driver' indica qual driver será utilizado durante a criação da rede local.__
+
+3 - Eric, para testar sua amiga Paula, executou o seguinte comando:
+
+``` Docker
+docker run -d --name meu-mongo --network minha-rede mongo
+```
+
+Em seguida, pediu para que Paula detalhasse o comando executado.
+
+Nesse contexto, marque as afirmativas verdadeiras a respeito do comando executado:
+
+- __Sobe um container na rede minha-rede.__
+- Executa o container na rede 'mongo'.
+- __Executa o container em modo 'detached'.__
+- É um comando inválido, pois o parâmetro '-d' não é suportado.
