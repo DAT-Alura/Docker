@@ -124,6 +124,6 @@ Flavio é um programador com muita experiência no mundo Javascript, porém agor
 - "/var/opt" e "/home/Flavio/Desktop/volumes/caminho/_data" pertencem ao container.
 - "/var/opt" e "/home/Flavio/Desktop/volumes/caminho/_data" pertencem à máquina.
 - "/home/Flavio/Desktop/volumes/caminho/_data"  pertence ao container e será armazenado no caminho "/var/opt" em nossa máquina.
-- __"/var/opt" pertence ao container e será escrito no caminho "/home/Flavio/Desktop/volumes/caminho/_data" em nossa máquina.__
+- __"/var/opt" pertence ao container e será escrito no caminho "/home/Flavio/Desktop/volumes/caminho/\_data" em nossa máquina.__
 
 > Correto! "/var/opt" pertence ao container enquanto "/home/Flavio/Desktop/volumes/caminho/_data" pertence à máquina e irá armazenar "/var/opt".
