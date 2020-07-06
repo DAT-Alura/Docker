@@ -76,3 +76,54 @@ Luis resolveu acessar sua aplicação, chamada de MinhaAplicacao e que está den
 - Luis deve usar o comando 'docker run MinhaAplicacao'.
 - __Luis deve usar o comando 'docker port ID_DO_CONTAINER'  para que possa saber qual porta de sua máquina faz referência à porta 8080 de seu container.__
 - Luis deve usar o comando 'docker rmi MinhaAplicacao'.
+
+## Aula 3
+
+Por que usamos volumes?
+
+- Containers não guardam nenhum dado (são read-only) e por isso precisamos de volumes.
+- __Muitas vezes removemos os containers após o uso. Volumes são usados para os dados que não devem ser removidos.__
+- O uso dos volumes simplifica a execução pois não precisamos mais de imagens.
+
+> Correto, é muito comum usar o container e apagá-lo após seu uso. Dessa forma também são removidos os dados desse container e aí entram os volumes que permitem salvar dados fora do container.
+
+Um volume fica salvo:
+
+- Na Imagem
+- __No Docker Host__
+- No Container
+
+> Correto, o volume fica no Docker Host. Ou seja, fica salvo no computador onde a Docker Engine está rodando.
+
+Qual dos comandos abaixo configura o volume do diretório /var/www do container para C:\logs do Host?
+
+- docker run -v "/var/www" ubuntu
+- docker run -v "C:\logs" ubuntu
+- __docker run -v "C:\logs:/var/www" ubuntu__
+- docker run "C:\logs:/var/www" ubuntu
+
+> Correto, usando a flag -v seguindo pelo CAMINHO_HOST:CAMINHO_CONTAINER.
+
+Flavio é um programador com muita experiência no mundo Javascript, porém agora resolveu se aventurar no mundo do Docker. Ao pensar em como iria organizar os caminhos dos volumes em sua máquina e container, ele executou o comando docker inspect. Abaixo temos um pedaço da saída do comando docker inspect ID_DO_CONTAINER no terminal de Flavio, sobre a saída abaixo é verdade que:
+
+```json
+"Mounts": [
+    {
+        "Type": "volume",
+        "Name": "5e1cbfd48d07284680552e56087c9d5196659600ccd6874bfa3831b51ddd0576",
+        "Source": "/home/Flavio/Desktop/volumes/caminho/_data",
+        "Destination": "/var/opt",
+        "Driver": "local",
+        "Mode": "",
+        "RW": true,
+        "Propagation": ""
+    }
+]
+```
+
+- "/var/opt" e "/home/Flavio/Desktop/volumes/caminho/_data" pertencem ao container.
+- "/var/opt" e "/home/Flavio/Desktop/volumes/caminho/_data" pertencem à máquina.
+- "/home/Flavio/Desktop/volumes/caminho/_data"  pertence ao container e será armazenado no caminho "/var/opt" em nossa máquina.
+- __"/var/opt" pertence ao container e será escrito no caminho "/home/Flavio/Desktop/volumes/caminho/_data" em nossa máquina.__
+
+> Correto! "/var/opt" pertence ao container enquanto "/home/Flavio/Desktop/volumes/caminho/_data" pertence à máquina e irá armazenar "/var/opt".
