@@ -127,3 +127,76 @@ Flavio é um programador com muita experiência no mundo Javascript, porém agor
 - __"/var/opt" pertence ao container e será escrito no caminho "/home/Flavio/Desktop/volumes/caminho/\_data" em nossa máquina.__
 
 > Correto! "/var/opt" pertence ao container enquanto "/home/Flavio/Desktop/volumes/caminho/_data" pertence à máquina e irá armazenar "/var/opt".
+
+## Aula 4
+
+1 - No primeiro dia de trabalho de Fernando, ele encontrou um Dockerfile chamado ns.dockerfile:
+
+```Dockerfile
+FROM node:latest
+MAINTAINER Ubuntu
+COPY . /var/www
+WORKDIR /var/www
+RUN npm install
+ENTRYPOINT npm start
+EXPOSE 3000
+```
+
+Marque as alternativas verdadeiras sobre o Dockerfile encontrado por Fernando:
+
+- __A imagem se baseia na imagem node. Inclusive o container se baseará sempre na última versão da imagem.__
+- __Todo o conteúdo que será copiado para a imagem ficará dentro da pasta '/var/www'.__
+- Em MAINTAINER indicamos a versão do sistema operacional que utilizaremos.
+- EXPOSE indica quanto tempo o container ficara no ar.
+
+2 - Guilherme Nicolau recebeu as seguintes instruções para criação de um docker container:
+
+- Deve instalar o mysql da última imagem disponível
+- Os dados iniciais devem ser copiados para a pasta /etc/sinc
+- O diretório de trabalho deve ser /etc/sinc/plen
+- A porta de comunicação deve ser 1711
+- O comando de entrada chmod 755 /etc/sinc
+
+Marque a opção que possui a configuração de um Dockerfile condizente com a especificação passada para Guilherme:
+
+A)
+
+```Dockerfile
+FROM mysql:latest
+MAINTAINER Guilherme Nicolau
+COPY . /etc/sinc/plen
+WORKDIR /etc/sinc
+EXPOSE 1711
+```
+
+__B__)
+
+```Dockerfile
+FROM mysql:latest
+MAINTAINER Guilherme Nicolau
+COPY . /etc/sinc
+WORKDIR /etc/sinc/plen
+ENTRYPOINT chmod 755 /etc/sinc
+EXPOSE 1711
+```
+
+C)
+
+```Dockerfile
+FROM mysql:latest
+MAINTAINER Guilherme Nicolau
+COPY /etc/sinc/plen
+WORKDIR . /etc/sinc
+ENTRYPOINT chmod 755 /etc/sinc
+EXPOSE 1711
+```
+
+D)
+
+```Dockerfile
+FROM mysql:latest
+MAINTAINER Guilherme Nicolau
+WORKDIR /etc/sinc/plen
+ENTRYPOINT chmod 755 /etc/sinc
+EXPOSE 1711
+```
