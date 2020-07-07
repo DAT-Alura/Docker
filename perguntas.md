@@ -249,3 +249,53 @@ Nesse contexto, marque as afirmativas verdadeiras a respeito do comando executad
 - Executa o container na rede 'mongo'.
 - __Executa o container em modo 'detached'.__
 - É um comando inválido, pois o parâmetro '-d' não é suportado.
+
+## Aula 6
+
+1 - Vejamos um exemplo de um dockerfile que utiliza a última imagem disponível do nginx:
+
+``` Dockerfile
+FROM nginx:latest
+MAINTAINER Douglas Quintanilha
+COPY /public /var/www/public
+COPY /docker/config/nginx.conf /etc/nginx/nginx.conf
+EXPOSE 80 443
+ENTRYPOINT ["nginx"]
+CMD ["-g", "daemon off;"]
+```
+
+Marque as alternativas verdadeiras sobre o arquivo:
+
+- __Utilizamos a última versão disponível da imagem do nginx como base__
+- Apenas a porta 80 é aberta.
+- __Copiamos o conteúdo da pasta public, que contém os arquivos estáticos, e um arquivo de configuração do NGINX para dentro do container.__
+- __É executado o comando nginx, passando os parâmetros extras -g e daemon off.__
+
+2 - Quais das descrições podem ser responsabilidades do Docker Compose?
+
+- __Executar o build de vários containers.__
+- __Desligar os containers de maneira coordenada.__
+- Manipular apenas um container.
+- __Criar nova rede em qual os containers podem participar.__
+
+> Correto, o docker compose cria uma rede padrão. Também é possível criar uma nova rede usando o comando 'docker network'.
+
+3 - Ana configurou o docker-compose.yml corretamente e subiu os containers. Depois de um tempo ela gostaria de reinicializá-los. Para tal, ela executa:
+
+``` Docker
+docker-compose down
+docker-compose up
+```
+
+Estes comandos funcionam e não têm nada de errado, mas será que você consegue achar um atalho para isso?
+
+Obs: Não vimos o comando na aula, mas basta executar o comando abaixo para descobrir a resposta:
+
+``` Docker
+docker-compose --help
+```
+
+- docker-compose rerun
+- docker-compose restore
+- docker-compose resume
+- __docker-compose restart__
